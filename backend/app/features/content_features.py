@@ -68,6 +68,7 @@ class ContentFeatureExtractor:
                     action_verb_count += 1
                     unique_action_verbs_used.add(word_lower)
 
+        action_verb_count_norm = min(1.0, action_verb_count / max(total_bullets * 2, 1))
         starts_with_action_verb = bullets_starting_with_action_verb / max(total_bullets, 1)
         variety_score = min(1.0, len(unique_action_verbs_used) / max(total_bullets, 1))
 
@@ -93,6 +94,7 @@ class ContentFeatureExtractor:
 
         return ContentFeatures(
             action_verb_count=action_verb_count,
+            action_verb_count_norm=action_verb_count_norm,
             starts_with_action_verb=starts_with_action_verb,
             unique_action_verbs_used=sorted(list(unique_action_verbs_used)),
             variety_score=variety_score,

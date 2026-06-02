@@ -17,14 +17,15 @@ class ATSFeatureExtractor:
         contact_score = min(1.0, raw_contact_score / 3.7)  # max possible is 3.7
 
         # 2. SECTION PRESENCE
-        sections_found = 0
-        if resume_data.summary: sections_found += 1
-        if resume_data.education: sections_found += 1
-        if resume_data.experience: sections_found += 1
-        if resume_data.skills: sections_found += 1
-        if resume_data.projects: sections_found += 1
-        if resume_data.certifications: sections_found += 1
-        if resume_data.achievements: sections_found += 1
+        has_summary = bool(resume_data.summary)
+        has_education = bool(resume_data.education)
+        has_experience = bool(resume_data.experience)
+        has_skills = bool(resume_data.skills)
+        has_projects = bool(resume_data.projects)
+        has_certifications = bool(resume_data.certifications)
+        has_achievements = bool(resume_data.achievements)
+
+        sections_found = sum([has_summary, has_education, has_experience, has_skills, has_projects, has_certifications, has_achievements])
         section_completeness = sections_found / 7.0
 
         # 3. FORMAT PENALTY FEATURES
@@ -75,6 +76,15 @@ class ATSFeatureExtractor:
         ats_score = max(0.0, min(100.0, raw))
 
         return ATSFeatures(
+            has_email=bool(ci.email),
+            has_phone=bool(ci.phone),
+            has_linkedin=bool(ci.linkedin_url),
+            has_github=bool(ci.github_url),
+            has_summary=has_summary,
+            has_education=has_education,
+            has_experience=has_experience,
+            has_skills=has_skills,
+            has_projects=has_projects,
             contact_score=contact_score,
             section_completeness=section_completeness,
             tables_penalty=tables_penalty,

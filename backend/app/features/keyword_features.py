@@ -103,6 +103,9 @@ class KeywordFeatureExtractor:
             exact_match_score=round(exact_match_score, 2),
             weighted_match_score=round(weighted_match_score, 2),
             coverage_by_category=coverage_by_category,
+            lang_coverage=coverage_by_category.get("languages", 0.0),
+            framework_coverage=coverage_by_category.get("frameworks", 0.0),
+            tools_coverage=coverage_by_category.get("tools", 0.0),
             keyword_score=round(max(0.0, min(100.0, keyword_score)), 2)
         )
 
