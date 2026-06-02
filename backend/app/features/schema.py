@@ -28,3 +28,19 @@ class ContentFeatures:
     has_quantified_achievements: bool = False
     tense_consistency_score: float = 0.0
     content_score: float = 0.0
+
+@dataclass
+class KeywordFeatures:
+    matched_keywords: list[str] = field(default_factory=list)
+    missing_keywords: list[str] = field(default_factory=list)
+    exact_match_score: float = 0.0
+    weighted_match_score: float = 0.0
+    coverage_by_category: dict[str, float] = field(default_factory=dict)
+    keyword_score: float = 0.0
+
+@dataclass
+class SemanticFeatures:
+    job_similarity: float = 0.0
+    industry_fit: float = 0.0
+    skills_coherence: float = 0.0
+    semantic_score: float = 0.0
