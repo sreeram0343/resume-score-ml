@@ -16,3 +16,4 @@ pydantic-settings
 python-multipart
 slowapi
 redis
+asyncpg

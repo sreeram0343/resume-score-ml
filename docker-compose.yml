@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://user:password@postgres:5432/resume_db
+      - DATABASE_URL=postgresql+asyncpg://user:password@postgres:5432/resume_db
       - REDIS_URL=redis://redis:6379/0
       - ENV=development
       - LOG_LEVEL=DEBUG
