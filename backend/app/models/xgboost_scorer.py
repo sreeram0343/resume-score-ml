@@ -92,17 +92,22 @@ class ResumeScorer:
             cv_scores=cv_scores
         )
 
-    def predict(self, feature_vector: np.ndarray) -> float:
+    def predict(self, feature_vector: np.ndarray) -> float | np.ndarray:
         if not self._is_fitted:
             raise ValueError("Model is not fitted yet.")
         
-        if feature_vector.ndim == 1:
+        is_single = feature_vector.ndim == 1
+        if is_single:
             feature_vector = feature_vector.reshape(1, -1)
             
         scaled = self.scaler.transform(feature_vector)
         raw_pred = self.model.predict(scaled)
         calibrated = self.calibrator.transform(raw_pred)
-        return float(np.clip(calibrated[0], 0, 100))
+        clipped = np.clip(calibrated, 0, 100)
+        
+        if is_single:
+            return float(clipped[0])
+        return clipped
 
     def predict_with_fallback(self, feature_vector: np.ndarray, scores: dict[str, float]) -> float:
         """Fallback to weighted average if model is not available."""
