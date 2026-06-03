@@ -30,6 +30,7 @@ class ResumeScorer:
             reg_lambda=1.0,
             objective="reg:squarederror",
             eval_metric="mae",
+            early_stopping_rounds=50,
             random_state=42
         )
         self.scaler = StandardScaler()
@@ -53,7 +54,7 @@ class ResumeScorer:
             X_v_s = temp_scaler.transform(X_v)
             
             temp_model = xgb.XGBRegressor(**self.model.get_params())
-            temp_model.fit(X_t_s, y_t, eval_set=[(X_v_s, y_v)], early_stopping_rounds=50, verbose=False)
+            temp_model.fit(X_t_s, y_t, eval_set=[(X_v_s, y_v)], verbose=False)
             
             preds = temp_model.predict(X_v_s)
             cv_scores.append(mean_absolute_error(y_v, preds))
@@ -68,7 +69,6 @@ class ResumeScorer:
             X_train_scaled, 
             y_train, 
             eval_set=[(X_val_scaled, y_val)], 
-            early_stopping_rounds=50, 
             verbose=False
         )
         
