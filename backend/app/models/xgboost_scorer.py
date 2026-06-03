@@ -76,13 +76,13 @@ class ResumeScorer:
         raw_preds = self.model.predict(X_train_scaled)
         self.calibrator.fit(raw_preds, y_train)
         
+        self._is_fitted = True
+        
         # Evaluation
         y_pred = self.predict(X_val)
         mae = mean_absolute_error(y_val, y_pred)
         rmse = np.sqrt(mean_squared_error(y_val, y_pred))
         r2 = r2_score(y_val, y_pred)
-        
-        self._is_fitted = True
         
         return TrainingResult(
             mae=mae,
