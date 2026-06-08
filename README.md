@@ -253,7 +253,14 @@ If `make` is not supported on your operating system (e.g. Windows without MSYS2/
 * **Apply DB migration**: `cd backend && alembic upgrade head`
 * **Generate Alembic revision**: `cd backend && alembic revision --autogenerate -m "migration_name"`
 
+### 🧪 Testing & Verification Coverage
+The backend uses a modular testing configuration with `pytest`:
+* **Model Explainability tests**: Validates SHAP fallback explanation generations under missing scorer parameters.
+* **Layout and Parser tests**: Verifies PDF/DOCX contact extracting and section categorization consistency.
+* **NLP Pipeline tests**: Checks spacy named entity extraction accuracy and phrase matching score ranges.
+
 ---
+
 
 
 ## 🐳 Docker Deployment
