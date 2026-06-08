@@ -202,6 +202,13 @@ The API is fully documented with OpenAPI spec. Access the interactive swagger UI
    cp .env.example .env
    ```
 3. Customize configuration values in `.env` (database connection URLs, file limits, environment).
+4. Navigate to the frontend directory, install npm packages, and verify compilation:
+   ```bash
+   cd frontend
+   npm install
+   npm run build
+   ```
+
 
 ### Setup and Running with Makefile
 
