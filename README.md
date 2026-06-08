@@ -246,3 +246,23 @@ This will bootstrap:
 - **Next.js Frontend**: [http://localhost:3000](http://localhost:3000)
 - **PostgreSQL**: Port `5432`
 - **Redis**: Port `6379`
+
+---
+
+## 🔧 Troubleshooting
+
+### 1. TypeScript compilation issues with CSS
+If you run into `Cannot find module or type declarations for side-effect import of './globals.css'` during the compilation step, verify that the declaration file `frontend/src/global.d.ts` contains:
+```typescript
+declare module '*.css' {
+  const content: { [className: string]: string };
+  export default content;
+}
+```
+
+### 2. CORS Errors in local dev
+Ensure the FastAPI backend environment variables allow connection from the frontend. In `backend/.env` (or via docker-compose), ensure:
+```env
+ALLOWED_ORIGINS=http://localhost:3000
+```
+
