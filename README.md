@@ -71,7 +71,9 @@ graph TD
   - Scoring is handled via a trained **XGBoost Regressor** that generates a normalized score between 0 and 100.
   - Predictions are parsed through a **SHAP (SHapley Additive exPlanations)** engine, returning the exact waterfall data representing the positive or negative contribution of each feature towards the final grade.
 - 💡 **Actionable Suggestion Engine**: Dynamically analyzes the SHAP waterfall data and ATS/Content check failures to generate tailored recommendations (e.g. *"Your experience density has a strong negative contribution (-8.5 pts). Expand your project descriptions."*).
+- 📊 **Interactive SHAP Visualizer**: A custom-engineered, lightweight CSS/SVG chart rendering pipeline that maps raw game-theoretic SHAP contribution values into a responsive waterfall graph. Candidates can instantly trace how specific aspects (e.g., keyword match, layout) pushed their score up or down from the baseline.
 - 🧹 **Automatic Data Maintenance**: Auto-cleans expired resume records in the database based on lifespan rules.
+
 
 ---
 
