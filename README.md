@@ -7,6 +7,7 @@ An enterprise-grade, machine-learning-powered **Resume Score Checker & ATS Optim
 ## 🚀 Badges & Tech Stack
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Next.js 14](https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-1572B6?style=for-the-badge&logo=python&logoColor=white)](https://xgboost.readthedocs.io/)
 [![SHAP](https://img.shields.io/badge/SHAP_Explainers-FF6F00?style=for-the-badge&logo=googleanalytics&logoColor=white)](https://github.com/shap/shap)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
