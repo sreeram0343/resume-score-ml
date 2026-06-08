@@ -239,7 +239,15 @@ This project provides a `Makefile` to simplify setup, training, and execution:
 > [!TIP]
 > Run `make train` before starting the application locally to generate the XGBoost Scorer model binary (`scorer.pkl`).
 
+### 💻 Manual CLI Commands (Fallback)
+If `make` is not supported on your operating system (e.g. Windows without MSYS2/MinGW), execute the CLI commands manually:
+* **Train model**: `cd backend && python -m ml_pipeline.train`
+* **Run test suite**: `cd backend && pytest`
+* **Apply DB migration**: `cd backend && alembic upgrade head`
+* **Generate Alembic revision**: `cd backend && alembic revision --autogenerate -m "migration_name"`
+
 ---
+
 
 ## 🐳 Docker Deployment
 
