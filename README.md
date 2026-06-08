@@ -296,3 +296,10 @@ Ensure the FastAPI backend environment variables allow connection from the front
 ALLOWED_ORIGINS=http://localhost:3000
 ```
 
+### 3. Future Roadmap & Core Enhancements
+Planned feature developments include:
+* **Interactive PDF Exporting**: Export detailed score breakdowns and optimization suggestions in a professionally formatted PDF.
+* **Resume Comparison Dashboard**: Side-by-side comparison score grid for comparing multiple resume versions against the same role.
+* **Historical Tracker**: Account profile page showing historical resume iterations and grade improvements over time.
+
+
