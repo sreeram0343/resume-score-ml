@@ -82,7 +82,7 @@ graph TD
 | Category | Component | Details |
 | :--- | :--- | :--- |
 | **Backend** | FastAPI | Async routing, Pydantic data validation, modular routers, dependency injection. |
-| **Frontend** | Next.js 14 | Built on React, modern routing, dynamic score visualization dashboards. |
+| **Frontend** | Next.js 14 & TypeScript | Built on React 18, App Router, metadata SEO optimization, fully responsive glassmorphism styles with zero third-party visual framework dependencies. |
 | **Database** | PostgreSQL | Persistent relational storage for parsed resumes, scores, feature vectors, and recommendations. Managed via **SQLAlchemy (Async)** and versioned using **Alembic**. |
 | **Caching / Broker** | Redis | Caching Layer & session key management. |
 | **Machine Learning**| XGBoost | High-performance gradient boosted tree regression model. |
