@@ -90,7 +90,14 @@ graph TD
 | **NLP** | spaCy | Named Entity Recognition (NER), linguistic matching, and phrase mapping. |
 | **Containerization**| Docker Compose | Multi-container setups for seamless local deployment. |
 
+### 🗄️ Database Schema & Cache Management
+The database relies on an asynchronous SQLAlchemy pipeline to persist the raw resume documents and calculated SHAP values:
+* **Resume Table**: Holds base metadata, parsed raw text, page count, word count, and JSON-serialized ATS flags.
+* **Score Table**: Stores target role/job description, feature importance maps, full Shapley waterfall values list, and overall numeric grading metrics.
+* **Redis Caching**: Controls session lifetimes, caching temporary scoring operations, and preventing duplicate processing on identical payloads within active windows.
+
 ---
+
 
 ## 🧠 Machine Learning Pipeline
 
