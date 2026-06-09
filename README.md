@@ -65,7 +65,7 @@ graph TD
 - 🧪 **Multi-Stage Feature Extraction**:
   - **ATS Compliance**: Evaluates file type, page and word count constraints, and compatibility issues.
   - **Content Quality**: Examines key section completeness (Education, Experience, Skills, Projects) and validates item distributions.
-  - **Keyword matching**: Uses direct token/frequency mapping to spot missing critical skills and keywords from a Job Description.
+  - **Keyword Matching**: Uses direct token/frequency mapping to spot missing critical skills and keywords from a Job Description.
   - **Semantic Relevance**: Leverages NLP techniques (including spaCy) to match semantic contexts of work history and skills against target role descriptions.
 - 🤖 **Explainable AI with XGBoost & SHAP**:
   - Scoring is handled via a trained **XGBoost Regressor** that generates a normalized score between 0 and 100.
