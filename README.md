@@ -290,6 +290,9 @@ declare module '*.css' {
 }
 ```
 
+### 2. Next.js Hydration mismatch issues
+If you see hydration mismatch warnings in your browser console during development, check that your browser extensions (e.g. adblockers, dark mode toggles) are not injecting content that alters the DOM structure.
+
 ### 2. CORS Errors in local dev
 Ensure the FastAPI backend environment variables allow connection from the frontend. In `backend/.env` (or via docker-compose), ensure:
 ```env
