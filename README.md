@@ -272,7 +272,7 @@ make dev
 ```
 
 This will bootstrap:
-- **FastAPI API Server**: [http://localhost:8000](http://localhost:8000)
+- **FastAPI Backend API Server**: [http://localhost:8000](http://localhost:8000)
 - **Next.js Frontend**: [http://localhost:3000](http://localhost:3000)
 - **PostgreSQL**: Port `5432`
 - **Redis**: Port `6379`
