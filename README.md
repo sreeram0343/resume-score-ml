@@ -296,7 +296,13 @@ Ensure the FastAPI backend environment variables allow connection from the front
 ALLOWED_ORIGINS=http://localhost:3000
 ```
 
-### 3. Future Roadmap & Core Enhancements
+### 3. SpaCy Model Downloading Failure
+If the `en_core_web_sm` model fails to load or download automatically, manually run:
+```bash
+python -m spacy download en_core_web_sm
+```
+
+### 4. Future Roadmap & Core Enhancements
 Planned feature developments include:
 * **Interactive PDF Exporting**: Export detailed score breakdowns and optimization suggestions in a professionally formatted PDF.
 * **Resume Comparison Dashboard**: Side-by-side comparison score grid for comparing multiple resume versions against the same role.
