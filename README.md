@@ -230,7 +230,7 @@ The API is fully documented with OpenAPI spec. Access the interactive swagger UI
 
 ### Setup and Running with Makefile
 
-This project provides a `Makefile` to simplify setup, training, and execution:
+This project provides a `Makefile` to simplify local setup, training, and execution:
 
 | Command | Action |
 | :--- | :--- |
