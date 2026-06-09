@@ -316,5 +316,6 @@ Planned future feature developments include:
 * **Resume Comparison Dashboard**: Interactive side-by-side comparison score grid for comparing multiple resume versions against the same role.
 * **Historical Tracker**: Account profile page showing historical resume iterations and grade improvements over time.
 * **AI-Powered Cover Letter Generator**: Generate a matching cover letter optimized for the target job description.
+* **ATS Analytics Dashboard**: General metrics dashboard displaying layout pass/fail rates and commonly missing keywords across all evaluated resumes.
 
 
