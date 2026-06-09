@@ -293,19 +293,21 @@ declare module '*.css' {
 ### 2. Next.js Hydration mismatch issues
 If you see hydration mismatch warnings in your browser console during development, check that your browser extensions (e.g. adblockers, dark mode toggles) are not injecting content that alters the DOM structure.
 
-### 2. CORS Errors in local dev
+### 3. CORS Errors in local dev
 Ensure the FastAPI backend environment variables allow connection from the frontend. In `backend/.env` (or via docker-compose), ensure:
 ```env
 ALLOWED_ORIGINS=http://localhost:3000
 ```
 
-### 3. SpaCy Model Downloading Failure
+### 4. SpaCy Model Downloading Failure
 If the `en_core_web_sm` model fails to load or download automatically, manually run:
 ```bash
 python -m spacy download en_core_web_sm
 ```
 
-### 4. Future Roadmap & Core Enhancements
+---
+
+## 🔮 Future Roadmap & Core Enhancements
 Planned feature developments include:
 * **Interactive PDF Exporting**: Export detailed score breakdowns and optimization suggestions in a professionally formatted PDF.
 * **Resume Comparison Dashboard**: Side-by-side comparison score grid for comparing multiple resume versions against the same role.
