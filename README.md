@@ -305,6 +305,9 @@ If the `en_core_web_sm` model fails to load or download automatically, manually 
 python -m spacy download en_core_web_sm
 ```
 
+### 5. Swagger UI not loading in the browser
+If the interactive documentation page `/api/docs` fails to load, ensure the backend application is running properly on port 8000 and that no other services are occupying the port.
+
 ---
 
 ## 🔮 Future Roadmap & Core Enhancements
