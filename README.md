@@ -135,7 +135,7 @@ The flattener transforms modular feature groups into a unified numerical vector:
 1. **ATS Compliance Features**: Scanned PDF flag (binary), page/word count ratios, special character density.
 2. **Section Content Quality Features**: Integrity check scores for Education, Skills, and Experience.
 3. **Keyword Matching Features**: Token match frequency and tf-idf overlap with target requirements.
-4. **Semantic Similarity Features**: Embedding distance score using spaCy NLP models.
+4. **Semantic Similarity Features**: Embedding distance score using spaCy NLP models to verify contextual role similarity.
 
 
 ---
