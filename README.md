@@ -142,7 +142,7 @@ The flattener transforms modular feature groups into a unified numerical vector:
 
 ## 🔌 API Reference (FastAPI)
 
-The API is fully documented with OpenAPI spec. Access the interactive swagger UI at `http://localhost:8000/api/docs`.
+The API is fully documented with OpenAPI spec. Access the interactive Swagger UI at [http://localhost:8000/api/docs](http://localhost:8000/api/docs) or ReDoc at [http://localhost:8000/api/redoc](http://localhost:8000/api/redoc).
 
 ### 1. Upload Resume
 * **Endpoint**: `POST /api/v1/resume/upload_resume`
