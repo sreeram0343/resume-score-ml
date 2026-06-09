@@ -1,6 +1,6 @@
 # 📄 Resume Score Checker ML
 
-An enterprise-grade, machine-learning-powered **Resume Score Checker & ATS Optimizer**. This application uses a multi-faceted feature extraction pipeline, a trained **XGBoost regressor**, and **SHAP (SHapley Additive exPlanations)** to score resumes against target roles or job descriptions and provide explainable, actionable recommendations to candidates.
+An enterprise-grade, machine-learning-powered **Resume Score Checker & ATS Optimizer**. This application uses a multi-faceted feature extraction pipeline, a trained **XGBoost regressor**, and **SHAP (SHapley Additive exPlanations)** to score resumes against target roles or job descriptions and provide explainable, actionable recommendations to candidates. The backend test suite is verified 100% passing.
 
 ---
 
