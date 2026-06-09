@@ -313,7 +313,7 @@ If the interactive documentation page `/api/docs` fails to load, ensure the back
 ## 🔮 Future Roadmap & Core Enhancements
 Planned future feature developments include:
 * **Interactive PDF Exporting**: Export detailed score breakdowns and optimization suggestions in a professionally formatted PDF.
-* **Resume Comparison Dashboard**: Side-by-side comparison score grid for comparing multiple resume versions against the same role.
+* **Resume Comparison Dashboard**: Interactive side-by-side comparison score grid for comparing multiple resume versions against the same role.
 * **Historical Tracker**: Account profile page showing historical resume iterations and grade improvements over time.
 * **AI-Powered Cover Letter Generator**: Generate a matching cover letter optimized for the target job description.
 
