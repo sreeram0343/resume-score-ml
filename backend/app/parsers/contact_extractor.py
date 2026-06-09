@@ -37,9 +37,18 @@ class ContactExtractor:
         # Try to find PERSON in first 10 lines
         lines = [l.strip() for l in text.split('\n') if l.strip()][:10]
         for line in lines:
+            # Skip lines that contain email, phone, links, or are section headers
+            if any([
+                cls.EMAIL_PATTERN.search(line),
+                cls.PHONE_PATTERN.search(line),
+                "linkedin.com" in line.lower(),
+                "github.com" in line.lower(),
+                line.upper() in ["SUMMARY", "EXPERIENCE", "WORK", "EMPLOYMENT", "EDUCATION", "SKILLS", "TECHNICAL SKILLS", "PROJECTS", "CERTIFICATIONS", "AWARDS"]
+            ]):
+                continue
             line_doc = nlp(line)
             for ent in line_doc.ents:
-                if ent.label_ == "PERSON":
+                if ent.label_ == "PERSON" and ent.text.lower() not in ["email", "phone", "linkedin", "github", "resume", "cv"]:
                     name = ent.text
                     break
             if name: break
@@ -47,8 +56,15 @@ class ContactExtractor:
         # Fallback for name
         if not name:
             for line in lines:
-                if not any([cls.EMAIL_PATTERN.search(line), cls.PHONE_PATTERN.search(line), 
-                           "linkedin.com" in line, "github.com" in line]):
+                if not any([
+                    cls.EMAIL_PATTERN.search(line),
+                    cls.PHONE_PATTERN.search(line),
+                    "linkedin.com" in line.lower(),
+                    "github.com" in line.lower(),
+                    "email" in line.lower(),
+                    "phone" in line.lower(),
+                    line.upper() in ["SUMMARY", "EXPERIENCE", "WORK", "EMPLOYMENT", "EDUCATION", "SKILLS", "TECHNICAL SKILLS", "PROJECTS", "CERTIFICATIONS", "AWARDS"]
+                ]):
                     name = line
                     break
 

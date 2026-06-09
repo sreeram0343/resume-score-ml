@@ -23,10 +23,35 @@ class ExperienceExtractor:
             entry = ExperienceEntry()
             doc = nlp(block)
             
+            lines = [l.strip() for l in block.split('\n') if l.strip()]
+
             # Extract Company (ORG)
-            orgs = [ent.text for ent in doc.ents if ent.label_ == "ORG"]
+            orgs = []
+            for ent in doc.ents:
+                if ent.label_ == "ORG":
+                    # Check if the entity text is in a line that is NOT a bullet line
+                    ent_first_line = ent.text.split('\n')[0].strip()
+                    if ent_first_line:
+                        ent_line = ""
+                        for line in lines:
+                            if ent_first_line in line:
+                                ent_line = line
+                                break
+                        if ent_line and not ent_line.startswith(('•', '-', '*')):
+                            orgs.append(ent_first_line)
+
             if orgs:
                 entry.company = orgs[0]
+
+            if not entry.company:
+                # Fallback: check first line
+                first_line = lines[0] if lines else ""
+                if (first_line and 
+                    not first_line.startswith(('•', '-', '*')) and 
+                    not any(title.lower() in first_line.lower() for title in cls.COMMON_TITLES) and
+                    not any(date_word in first_line.lower() for date_word in ["present", "current", "20"]) and
+                    len(first_line.split()) <= 6):
+                    entry.company = first_line
 
             # Extract Dates
             dates = [ent.text for ent in doc.ents if ent.label_ == "DATE"]
@@ -43,10 +68,9 @@ class ExperienceExtractor:
                 entry.duration_months = cls._calculate_duration(entry.start_date, entry.end_date)
 
             # Title Heuristics
-            lines = block.split('\n')
             for line in lines:
                 if any(title.lower() in line.lower() for title in cls.COMMON_TITLES):
-                    entry.title = line.strip()
+                    entry.title = line
                     break
 
             # Bullets

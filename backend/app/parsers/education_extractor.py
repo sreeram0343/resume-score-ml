@@ -21,7 +21,7 @@ class EducationExtractor:
             doc = nlp(block)
             orgs = [ent.text for ent in doc.ents if ent.label_ == "ORG"]
             if orgs:
-                entry.institution = orgs[0]
+                entry.institution = orgs[0].split('\n')[0].strip()
             
             # Degree
             degree_match = cls.DEGREE_PATTERN.search(block)

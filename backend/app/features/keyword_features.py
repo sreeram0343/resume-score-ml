@@ -114,16 +114,30 @@ class KeywordFeatureExtractor:
         nlp = get_nlp()
         doc = nlp(jd_text)
         
-        # Extract Nouns and Proper Nouns
+        # Collect all known tech words to avoid missing technologies that SpaCy tags as other POS (e.g. PRON)
+        known_tech = set()
+        for skills in cls.TECH_CATEGORIES.values():
+            for skill in skills:
+                known_tech.add(skill.lower())
+        for keywords_list in cls.DEFAULT_KEYWORDS.values():
+            for kw in keywords_list:
+                known_tech.add(kw.lower())
+
+        # Extract Nouns and Proper Nouns, or known tech
         keywords = []
         for token in doc:
-            if token.pos_ in ["NOUN", "PROPN"] and not token.is_stop and len(token.text) > 2:
-                keywords.append(token.lemma_.lower())
+            token_lower = token.text.lower()
+            token_lemma_lower = token.lemma_.lower()
+            if not token.is_stop and len(token.text) > 2:
+                if token.pos_ in ["NOUN", "PROPN"] or token_lower in known_tech or token_lemma_lower in known_tech:
+                    keywords.append(token_lemma_lower)
         
         # Extract Bigrams
         for i in range(len(doc) - 1):
             t1, t2 = doc[i], doc[i+1]
-            if t1.pos_ in ["NOUN", "PROPN"] and t2.pos_ in ["NOUN", "PROPN"]:
+            t1_is_noun_or_tech = (t1.pos_ in ["NOUN", "PROPN"] or t1.text.lower() in known_tech or t1.lemma_.lower() in known_tech)
+            t2_is_noun_or_tech = (t2.pos_ in ["NOUN", "PROPN"] or t2.text.lower() in known_tech or t2.lemma_.lower() in known_tech)
+            if t1_is_noun_or_tech and t2_is_noun_or_tech:
                 keywords.append(f"{t1.lemma_.lower()} {t2.lemma_.lower()}")
 
         counts = Counter(keywords)

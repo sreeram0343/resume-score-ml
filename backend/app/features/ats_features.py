@@ -14,7 +14,7 @@ class ATSFeatureExtractor:
         portfolio_val = 0.3 if ci.website else 0.0
         
         raw_contact_score = email_val + phone_val + linkedin_val + github_val + portfolio_val
-        contact_score = min(1.0, raw_contact_score / 3.7)  # max possible is 3.7
+        contact_score = round(min(1.0, raw_contact_score / 3.7), 4)  # max possible is 3.7
 
         # 2. SECTION PRESENCE
         has_summary = bool(resume_data.summary)
