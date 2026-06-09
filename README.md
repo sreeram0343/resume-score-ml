@@ -210,7 +210,7 @@ The API is fully documented with OpenAPI spec. Access the interactive swagger UI
 
 ### 📋 Prerequisites
 - Python 3.10+ (Fully compatible and tested on Python 3.14+)
-- Node.js 18+ & npm
+- Node.js 18+ (tested on Node 20+) & npm
 - Docker & Docker Compose (optional, for containerized run)
 
 ### Local Configuration
