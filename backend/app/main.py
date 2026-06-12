@@ -17,6 +17,17 @@ async def lifespan(app: FastAPI):
     setup_logging()
     logger.info("Application starting up", env=settings.env)
     
+    # Run database migrations
+    try:
+        from alembic.config import Config
+        from alembic import command
+        logger.info("Running database migrations...")
+        alembic_cfg = Config("alembic.ini")
+        command.upgrade(alembic_cfg, "head")
+        logger.info("Database migrations completed successfully.")
+    except Exception as e:
+        logger.error("Failed to run database migrations during startup", error=str(e))
+    
     # Download spacy model if missing
     try:
         import spacy

@@ -1,8 +1,7 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import String, Text, ForeignKey, func, Index
+from sqlalchemy import String, Text, ForeignKey, func, Index, JSON
 from sqlalchemy.orm import Mapped, mapped_column, relationship, declarative_base
-from sqlalchemy.dialects.postgresql import JSONB
 
 Base = declarative_base()
 
@@ -15,10 +14,10 @@ class Resume(Base):
     raw_text: Mapped[str] = mapped_column(Text)
     word_count: Mapped[int]
     page_count: Mapped[int]
-    contact_info: Mapped[dict | None] = mapped_column(JSONB)
-    sections: Mapped[dict | None] = mapped_column(JSONB)
-    ats_flags: Mapped[dict | None] = mapped_column(JSONB)
-    parsing_warnings: Mapped[list | None] = mapped_column(JSONB)
+    contact_info: Mapped[dict | None] = mapped_column(JSON)
+    sections: Mapped[dict | None] = mapped_column(JSON)
+    ats_flags: Mapped[dict | None] = mapped_column(JSON)
+    parsing_warnings: Mapped[list | None] = mapped_column(JSON)
     scores: Mapped[list["Score"]] = relationship(back_populates="resume", cascade="all, delete-orphan")
     created_at: Mapped[datetime] = mapped_column(server_default=func.now(), index=True)
     expires_at: Mapped[datetime | None]
@@ -35,11 +34,11 @@ class Score(Base):
     grade: Mapped[str] = mapped_column(String(3))
     job_description: Mapped[str | None] = mapped_column(Text)
     target_role: Mapped[str | None] = mapped_column(String(100))
-    feature_vector: Mapped[dict] = mapped_column(JSONB)
-    shap_values: Mapped[dict] = mapped_column(JSONB)
-    suggestions: Mapped[list] = mapped_column(JSONB)
-    keyword_gaps: Mapped[list | None] = mapped_column(JSONB)
-    waterfall_data: Mapped[dict | None] = mapped_column(JSONB)
+    feature_vector: Mapped[dict] = mapped_column(JSON)
+    shap_values: Mapped[dict] = mapped_column(JSON)
+    suggestions: Mapped[list] = mapped_column(JSON)
+    keyword_gaps: Mapped[list | None] = mapped_column(JSON)
+    waterfall_data: Mapped[dict | None] = mapped_column(JSON)
     processing_time_ms: Mapped[int]
     resume: Mapped["Resume"] = relationship(back_populates="scores")
     created_at: Mapped[datetime] = mapped_column(server_default=func.now(), index=True)
